@@ -18,7 +18,7 @@
     "email":        "________@gmail.com",
     "password":     "_____",
     "addressee":    "_____",
-	"subjectContent": "_____",
+    "subjectContent": "_____",
     "content": {
         "title": "____",
         "name":     "____",
@@ -34,24 +34,33 @@
 ## 💛 Ejemplo JavaScript
 ```javascript
 
-fetch(API_URL, {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        "email":        "________@gmail.com",
-        "password":     "_____",
-        "addressee":    "_____",
-        "subjectContent": "_____",
-        "content": {
-            "title": "____",
-            "name":     "____",
-            "lastName": "____",
-            "age":     "____",
-            "email":    "____"
-        }
-    })
-}).then((res) => res.json() ).then((data) => console.log(data));
+const handlerSubmit = async (event) => {
+	event.preventDefault();
+
+	const emailData = {
+	    email: process.env.EMAIL,
+	    password: process.env.PASSW,
+	    addressee: "__________",
+	    subjectContent: "__________",
+	    content: {
+		title: "__________",
+		name: "__________",
+		lastName: "__________",
+		age: "__________",
+		email: "__________"
+	    }
+	}
+
+	const response = await fetch('https://send-email-brown.vercel.app/send', {
+	    method: 'POST',
+	    headers: {
+		'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify(emailData),
+	})
+
+	const data = await response.json();
+	console.log(data);
+}
 
 ```
