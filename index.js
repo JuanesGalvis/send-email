@@ -1,8 +1,23 @@
 var nodemailer = require('nodemailer');
 var express = require('express');
 var app = express();
+const cors = require('cors');
+const port = process.env.PORT || 3005;
 
 app.use(express.json());
+
+const whiteList = ['http://localhost:8080'];
+const options = {
+    origin: (origin, callback) => {
+        if (whiteList.includes(origin) || true) {
+                   // Err, permitido?
+            callback(null, true);
+        } else {
+            callback(new Error("No permitido"));
+        }
+    }
+}
+app.use(cors(options));
 
 app.post('/send', (req, res) => {
 
@@ -72,6 +87,6 @@ app.post('/send', (req, res) => {
 
 });
 
-app.listen(3005, () => {
+app.listen(port, () => {
     console.log("Servidor corriendo en el puerto 3005");
 })
