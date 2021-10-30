@@ -1,0 +1,20 @@
+{
+  "name": "send-email",
+  "version": "1.0.0",
+  "description": "API para enviar emails a Gmail con Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Node.js",
+    "Nodemailer"
+  ],
+  "author": "JuanesGalvis",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.7.0"
+  },
+  "devDependencies": {}
+}
