@@ -23,6 +23,14 @@ app.post('/send', (req, res) => {
 
     const { email, password, addressee, content, subjectContent } = req.body;
 
+    const {
+        name,
+        cc,
+        email_user,
+        phone,
+        title
+    } = content;
+
    var transporter = nodemailer.createTransport({
        service: 'gmail',
        host: 'smtp.gmail.com',
@@ -46,7 +54,7 @@ app.post('/send', (req, res) => {
           <h1 style="color: #FF6565;
         font-size: 40px;
         font-weight: 700;
-        margin: 20px auto;">${content.title}</h1>
+        margin: 20px auto;">${title}</h1>
           <p style="  background-color: #414141;
         margin: 0 auto;
         color: white;
@@ -54,16 +62,16 @@ app.post('/send', (req, res) => {
         padding: 10px 5px;
                     text-align: center;">
             <a style="color: white; text-decoration: none;">
-                ${content.email}
+                ${email_user}
             </a>
             </p>
           <ul style="width: 310px;">
               <li style="list-style: none;
-        font-size: 18px;"><span>Nombre:</span> ${content.name}</li>
+        font-size: 18px;"><span>Nombre:</span> ${name}</li>
               <li style="list-style: none;
-        font-size: 18px;"><span>Apellido:</span> ${content.lastName}</li>
+        font-size: 18px;"><span>Identificación:</span> ${cc}</li>
               <li style="list-style: none;
-        font-size: 18px;"><span>Edad:</span> ${content.age}</li>
+        font-size: 18px;"><span>Teléfono:</span> ${phone}</li>
           </ul>
           <button style="background-color: #FF6565;
         color: white;

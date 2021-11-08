@@ -34,24 +34,32 @@
 ## 💛 Ejemplo JavaScript
 ```javascript
 
-fetch(API_URL, {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        "email":        "________@gmail.com",
-        "password":     "_____",
-        "addressee":    "_____",
-        "subjectContent": "_____",
-        "content": {
-            "title": "____",
-            "name":     "____",
-            "lastName": "____",
-            "age":     "____",
-            "email":    "____"
+const handlerSubmit = async (event) => {
+       
+        const emailData = {
+            email: "_________@gmail.com",
+            password: "_________",
+            addressee: "_________@gmail.com",
+            subjectContent: "_________",
+            content: {
+                title: "_________",
+                name: "_________",
+                lastName: "_________",
+                age: "_________",
+                email: "_________"
+            }
         }
-    })
-}).then((res) => res.json() ).then((data) => console.log(data));
+
+        const response = await fetch('https://send-email-brown.vercel.app/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(emailData),
+        })
+
+        const data = await response.json();
+        console.log(data);
+    }
 
 ```
