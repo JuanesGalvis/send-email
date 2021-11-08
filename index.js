@@ -25,10 +25,11 @@ app.post('/send', (req, res) => {
 
     const {
         name,
-        cc,
+        id,
         email_user,
         phone,
-        title
+        title,
+        disability
     } = content;
 
    var transporter = nodemailer.createTransport({
@@ -69,9 +70,12 @@ app.post('/send', (req, res) => {
               <li style="list-style: none;
         font-size: 18px;"><span>Nombre:</span> ${name}</li>
               <li style="list-style: none;
-        font-size: 18px;"><span>Identificación:</span> ${cc}</li>
+        font-size: 18px;"><span>Identificación:</span> ${id}</li>
               <li style="list-style: none;
         font-size: 18px;"><span>Teléfono:</span> ${phone}</li>
+        ${ disability ? `
+        <li style="list-style: none;
+        font-size: 18px;"><span>Discapacitad@:</span> ${disability}</li>`: ''}
           </ul>
           <button style="background-color: #FF6565;
         color: white;
