@@ -18,7 +18,7 @@
     "email":        "________@gmail.com",
     "password":     "_____",
     "addressee":    "_____",
-	"subjectContent": "_____",
+    "subjectContent": "_____",
     "content": {
         "title": "____",
         "name":     "____",
@@ -35,31 +35,32 @@
 ```javascript
 
 const handlerSubmit = async (event) => {
-       
-        const emailData = {
-            email: "_________@gmail.com",
-            password: "_________",
-            addressee: "_________@gmail.com",
-            subjectContent: "_________",
-            content: {
-                title: "_________",
-                name: "_________",
-                lastName: "_________",
-                age: "_________",
-                email: "_________"
-            }
-        }
+	event.preventDefault();
 
-        const response = await fetch('https://send-email-brown.vercel.app/send', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(emailData),
-        })
+	const emailData = {
+	    email: process.env.EMAIL,
+	    password: process.env.PASSW,
+	    addressee: "__________",
+	    subjectContent: "__________",
+	    content: {
+		title: "__________",
+		name: "__________",
+		lastName: "__________",
+		age: "__________",
+		email: "__________"
+	    }
+	}
 
-        const data = await response.json();
-        console.log(data);
-    }
+	const response = await fetch('https://send-email-brown.vercel.app/send', {
+	    method: 'POST',
+	    headers: {
+		'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify(emailData),
+	})
+
+	const data = await response.json();
+	console.log(data);
+}
 
 ```
