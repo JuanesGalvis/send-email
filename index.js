@@ -77,13 +77,6 @@ app.post('/send', (req, res) => {
         <li style="list-style: none;
         font-size: 18px;"><span>Discapacitad@:</span> ${disability}</li>`: ''}
           </ul>
-          <button style="background-color: #FF6565;
-        color: white;
-        width: 30%;
-        padding: 10px 5px;
-        text-align: center;
-        border: 0;
-        border-radius: 10px;">Botón</button>
       </section>
      `,
    }
